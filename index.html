@@ -21,7 +21,7 @@
     display: inline;
   }
 </style>
-<span>高100px,宽自适应</span>
+<span id="date">高100px,宽自适应</span>
 <div style="height:100px;width:100%;border-bottom:1px solid black" class="a">
   <span>高100px,宽自适应</span>
 </div>
@@ -40,6 +40,46 @@
 <div style="width: 200px;height: 200px;border: 1px solid black;display: table-cell;text-align: center;vertical-align: middle;">
   <div class="div" style="width: 100px;height: 100px;background-color: red;display:table-cell;text-align:center;vertical-align: middle;"></div>
 </div>
+<script>
+  //格式化日期：yyyy-MM-dd
+function formatDate(date) {
+    var myyear = date.getFullYear();
+    var mymonth = date.getMonth() + 1;
+    var myweekday = date.getDate();
+ 
+    if (mymonth < 10) {
+        mymonth = "0" + mymonth;
+    }
+    if (myweekday < 10) {
+        myweekday = "0" + myweekday;
+    }
+    return (myyear + "-" + mymonth + "-" + myweekday);//想要什么格式都可以随便自己拼
+}
+function nowTime() {
+        var date = new Date();
+        var curYear = date.getFullYear();
+        var curMonth = date.getMonth() + 1;
+        var curDate = date.getDate();
+        if(curMonth<10){
+                curMonth = '0' + curMonth;
+        }
+        if(curDate<10){
+                curDate = '0' + curDate;
+        }    
+        var curHours = date.getHours();
+        var curMinutes = date.getMinutes();
+        var curtime = curHours + ":" + curMinutes;
+        return curtime;
+}
+
+var date = new Date();
+//date
+//Mon Jun 25 2018 15:32:38 GMT+0800 (中国标准时间)
+formatDate(date);
+//"2018-06-25"
+var test1 = document.getElementById('date');
+test1.innerText  = formatDate(date)+nowTime();
+</script>
     
 </body>
 </html>
