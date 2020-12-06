@@ -9,29 +9,27 @@
 <style type="text/css">
     body {
       margin: 0;
-      font-family: SimHei;
       font-size: 14px;
     }
-    .tableCell {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .wrap {
+      font-size:0
     }
-    .tableCell--title {
-      font-size: 14px; 
-    }
-    .tableCell--content {
-      
+    .hide{
+      display: none
     }
   </style>
-  <div class="wrap">
+  <div class="wrap" style="width: 100%;position: relative;">
     <img src="assets/index.png" alt="" style="width: 100%;position: relative;">
-    <div class="date" style="position: absolute;left: 212px;top: 265px;font-size: 12px;background-color: white;transform: scale(0.8);font-weight: bold" id="date1">2020-12-4</div>
+    <div style="position: fixed;top:0;z-index: 10000000;" id="position" class="hide">
+      <img src="assets/animation.jpg" alt="" style="width: 100%">
+    </div>
+    <div class="date" style="position: absolute;left: 212px;top: 265px;font-size: 12px;background-color: white;transform: scale(0.8);font-family: SimHei;font-weight: bold" id="date1">2020-12-4</div>
     <!-- <div class="date" style="position: absolute;left: 210px;top: 298px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">张文腾</div>
     <div class="date" style="position: absolute;left: 215px;top: 334px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">202021198169</div>
     <div class="date" style="position: absolute;left: 225px;top: 404px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">男</div> -->
-    <div class="date" style="position: absolute;left: 212px;top: 595px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">2020-12-4</div>
-    <div class="date" style="position: absolute;left: 212px;top: 664px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date3">2020-12-4</div>
+    <div class="date" style="position: absolute;left: 212px;top: 595px;font-size: 12px;background-color: white;transform: scale(0.8);font-family: SimHei;font-weight: bold" id="date2" >2020-12-4</div>
+    <div class="date" style="position: absolute;left: 212px;top: 664px;font-size: 12px;background-color: white;transform: scale(0.8);font-family: SimHei;font-weight: bold" id="date3">2020-12-4</div>
+    
   </div>
 <script>
   //格式化日期：yyyy-MM-dd
@@ -64,7 +62,7 @@ function nowTime() {
         var curtime = curHours + ":" + curMinutes;
         return curtime;
 }
-
+//获取动态日期时间
 var date = new Date();
 //date
 //Mon Jun 25 2018 15:32:38 GMT+0800 (中国标准时间)
@@ -76,6 +74,25 @@ var date3 = document.getElementById('date3');
 date1.innerText  = formatDate(date);
 date2.innerText  = formatDate(date);
 date3.innerText  = formatDate(date);
+
+//吸顶效果
+// var navbar = document.getElementById('navbar')
+var position = document.getElementById('position')
+var navbarTop = 44; // 获取导航栏到父元素的顶部距离
+// 监听滚动
+window.onscroll = function () {
+  // 获取滚动的距离
+  var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop ;
+  console.log(scrollTop)
+  // /*方式一：动态绑定类*/
+  // // 滚动高度>元素距离顶部的位置时添加类，否则移除类
+  // scrollTop > navbarTop ? navbar.classList.add('fixed') : navbar.classList.remove('fixed')
+  // 控制占位内容是否显示
+  scrollTop > navbarTop ? position.classList.remove('hide') : position.classList.add('hide')
+  // /* 方式二：动态绑定属性
+  // navbar.setAttribute('data-fixed', scrollTop > navbarTop ? 'fixed' : '');
+  // */
+}
 </script>
     
 </body>
