@@ -24,6 +24,17 @@
         color: #e6ebe6;
         z-index: 1000;
       }
+      .date {
+        position: absolute;
+        left: 212px;
+        top: 265px;
+        font-size: 12px;
+        background-color: white;
+        transform: scale(0.8);
+        font-family: "SimHei", "黑体";
+        font-weight: bold;
+        color: #0f0e0e;
+      }
       .hide {
         display: none;
       }
@@ -42,58 +53,12 @@
       >
         <img src="assets/animation.jpg" alt="" style="width: 100%" />
       </div>
-      <div
-        class="date"
-        style="
-          position: absolute;
-          left: 212px;
-          top: 265px;
-          font-size: 12px;
-          background-color: white;
-          transform: scale(0.8);
-          font-family: 'SimHei', '黑体';
-          font-weight: bold;
-          color: #0f0e0e;
-        "
-        id="date1"
-      >
-        2020-12-4
-      </div>
+      <div class="date" id="date1">2020-12-4</div>
       <!-- <div class="date" style="position: ab"solute;left: 210px;top: 298px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">张文腾</div>
     <div class="date" style="position: absolute;left: 215px;top: 334px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">202021198169</div>
     <div class="date" style="position: absolute;left: 225px;top: 404px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">男</div> -->
-      <div
-        class="date"
-        style="
-          position: absolute;
-          left: 212px;
-          top: 595px;
-          font-size: 12px;
-          background-color: white;
-          transform: scale(0.8);
-          font-family: SimHei;
-          font-weight: bold;
-        "
-        id="date2"
-      >
-        2020-12-4
-      </div>
-      <div
-        class="date"
-        style="
-          position: absolute;
-          left: 212px;
-          top: 664px;
-          font-size: 12px;
-          background-color: white;
-          transform: scale(0.8);
-          font-family: SimHei;
-          font-weight: bold;
-        "
-        id="date3"
-      >
-        2020-12-4
-      </div>
+      <div class="date" style="top: 595px" id="date2">2020-12-4</div>
+      <div class="date" style="top: 664px" id="date3">2020-12-4</div>
     </div>
     <script>
       //计算时间间隔，输出序号
