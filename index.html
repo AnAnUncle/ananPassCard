@@ -8,7 +8,9 @@
 <body>
 <style type="text/css">
     body {
-      margin: 0
+      margin: 0;
+      font-family: SimHei;
+      font-size: 14px;
     }
     .tableCell {
       display: flex;
@@ -24,7 +26,7 @@
   </style>
   <div class="wrap">
     <img src="assets/index.png" alt="" style="width: 100%;position: relative;">
-    <div class="date" style="position: absolute;left: 212gpx;top: 265px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">2020-12-4</div>
+    <div class="date" style="position: absolute;left: 212px;top: 265px;font-size: 12px;background-color: white;transform: scale(0.8);font-weight: boldgit " id="date1">2020-12-4</div>
     <!-- <div class="date" style="position: absolute;left: 210px;top: 298px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">张文腾</div>
     <div class="date" style="position: absolute;left: 215px;top: 334px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">202021198169</div>
     <div class="date" style="position: absolute;left: 225px;top: 404px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">男</div> -->
@@ -68,9 +70,9 @@ var date = new Date();
 //Mon Jun 25 2018 15:32:38 GMT+0800 (中国标准时间)
 formatDate(date);
 //"2018-06-25"
-var date1 = document.getElementById('date');
+var date1 = document.getElementById('date1');
 var date2 = document.getElementById('date2');
-var date3 = document.getElementById('date2');
+var date3 = document.getElementById('date3');
 date1.innerText  = formatDate(date);
 date2.innerText  = formatDate(date);
 date3.innerText  = formatDate(date);
