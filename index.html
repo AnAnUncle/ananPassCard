@@ -54,9 +54,10 @@
       >
         <img src="assets/animation.jpg" alt="" style="width: 100%" />
       </div>
+      <!-- 点击三点也会返回顶部 -->
       <a
         href="#topAnchor"
-        style="position: fixed; top: 11px;right: 50px; z-index: 10000"
+        style="position: fixed; top: 11px;right: 0;z-index: 10000;padding-right: 50px;"
         id="arrow"
         class="hide"
       >
@@ -97,10 +98,14 @@
       function transformHour(delay) {
         var dateEnd = new Date(); //获取当前时间
         var hours = dateEnd.getHours(); //计算出小时数
-        var minutes=dateEnd.getMinutes()//计算相差分钟数
+        var minutes= dateEnd.getMinutes()//计算相差分钟数
         let result
         if(+delay < 0) {
-          result = (hours) + ":" + (minutes - 2)
+          let newMinutes = minutes + delay
+          if(minutes < 10 ){
+            newMinutes = "0" + newMinutes
+          }
+          result = (hours) + ":" + newMinutes
         }
         else {
           result = (hours + delay) + ":" + "59"
@@ -153,7 +158,7 @@
       date1.innerText = formatDate(date);
       date2.innerText = formatDate(date);
       date3.innerText = formatDate(date);
-      hourOut.innerText = transformHour(-1);
+      hourOut.innerText = transformHour(-2);
       hourIn.innerText = transformHour(0);
 
       //动态填写序号
