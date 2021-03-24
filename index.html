@@ -35,6 +35,15 @@
         font-weight: bold;
         color: #0f0e0e;
       }
+      .date2 {
+        position: absolute;
+        font-size: 16px;
+        background-color: white;
+        transform: scale(0.8);
+        font-family: "SimHei", "黑体";
+        font-weight: bold;
+        color: #828282;
+      }
       .hide {
         display: none;
       }
@@ -43,7 +52,7 @@
     <div class="wrap" style="width: 100%; position: relative">
       <div class="id" id="passCodeId">246992</div>
       <img
-        src="assets/index.png"
+        src="assets/index2.png"
         alt=""
         style="width: 100%; position: relative"
       />
@@ -52,7 +61,7 @@
         id="position"
         class="hide"
       >
-        <img src="assets/animation.jpg" alt="" style="width: 100%" />
+        <img src="assets/animation2.png" alt="" style="width: 100%" />
       </div>
       <!-- 点击三点也会返回顶部 -->
       <a
@@ -67,10 +76,18 @@
       <!-- <div class="date" style="position: ab"solute;left: 210px;top: 298px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">张文腾</div>
     <div class="date" style="position: absolute;left: 215px;top: 334px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">202021198169</div>
     <div class="date" style="position: absolute;left: 225px;top: 404px;font-size: 12px;background-color: white;transform: scale(0.8)" id="date2">男</div> -->
-      <div class="date" style="top: 595px" id="date2">2020-12-4</div>
-      <div class="date" style="top: 664px" id="date3">2020-12-4</div>
-      <div class="date" style="top: 630px;left:220px" id="hourOut">14:20</div>
-      <div class="date" style="top: 699px;left:220px" id="hourIn">14:20</div>
+      <div class="date" style="top: 575px" id="date2">2020-12-4</div>
+      <div class="date" style="top: 644px" id="date3">2020-12-4</div>
+      <div class="date" style="top: 610px;left:220px" id="hourOut">14:20</div>
+      <div class="date" style="top: 679px;left:220px" id="hourIn">14:20</div>
+      <div class="date2" style="bottom: 130px;right: 6px;">
+        <span id="confirmHour">2021/03/24</span>
+        <span id="confirmMinutes">08:20</span>
+      </div>
+      <div class="date2" style="bottom: 72px;right: 6px;">
+        <span id="applyHour">2021/03/24</span>
+        <span id="applyMinutes">08:00</span>
+      </div>
     </div>
     <script>
       //计算时间间隔，输出序号
@@ -95,17 +112,21 @@
         // console.log(dateDiff+"时间差的毫秒数",dayDiff+"计算出相差天数",leave1+"计算天数后剩余的毫秒数"
         //     ,hours+"计算出小时数",minutes+"计算相差分钟数",seconds+"计算相差秒数");
       }
-      function transformHour(delay) {
+      function transformHour(delay,delayHour) {
         var dateEnd = new Date(); //获取当前时间
         var hours = dateEnd.getHours(); //计算出小时数
         var minutes= dateEnd.getMinutes()//计算相差分钟数
         let result
         if(+delay < 0) {
           let newMinutes = minutes + delay
+          let newHour = hours + delayHour
           if(minutes < 10 ){
             newMinutes = "0" + newMinutes
           }
-          result = (hours) + ":" + newMinutes
+          if(newHour < 10 ){
+            newHour = "0" + newHour
+          }
+          result = (newHour) + ":" + newMinutes
         }
         else {
           result = (hours + delay) + ":" + "59"
@@ -158,8 +179,8 @@
       date1.innerText = formatDate(date);
       date2.innerText = formatDate(date);
       date3.innerText = formatDate(date);
-      hourOut.innerText = transformHour(-2);
-      hourIn.innerText = transformHour(0);
+      hourOut.innerText = transformHour(-2,-2);
+      hourIn.innerText = transformHour(0,0);
 
       //动态填写序号
       var passCodeId = document.getElementById("passCodeId");
