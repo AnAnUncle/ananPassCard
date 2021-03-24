@@ -81,12 +81,10 @@
       <div class="date" style="top: 610px;left:220px" id="hourOut">14:20</div>
       <div class="date" style="top: 679px;left:220px" id="hourIn">14:20</div>
       <div class="date2" style="bottom: 130px;right: 6px;">
-        <span id="confirmHour">2021/03/24</span>
-        <span id="confirmMinutes">08:20</span>
+        <span id="confirmdate">2021/03/24 08:00</span>
       </div>
       <div class="date2" style="bottom: 72px;right: 6px;">
-        <span id="applyHour">2021/03/24</span>
-        <span id="applyMinutes">08:00</span>
+        <span id="applydate">2021/03/24 08:00</span>
       </div>
     </div>
     <script>
@@ -100,7 +98,7 @@
         var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000)); //计算出相差天数
         var leave1 = dateDiff % (24 * 3600 * 1000); //计算天数后剩余的毫秒数
         var hours = Math.floor(leave1 / (3600 * 1000)); //计算出小时数
-        let result = Math.floor(dayDiff * 1900 + (hours * 1900) / 15) + 246992;
+        let result = Math.floor(dayDiff * 1900 + (hours * 1900) / 15) + 298855;
         return result;
         // //计算相差分钟数
         // var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
@@ -118,9 +116,9 @@
         var minutes= dateEnd.getMinutes()//计算相差分钟数
         let result
         if(+delay < 0) {
-          let newMinutes = minutes + delay
-          let newHour = hours + delayHour
-          if(minutes < 10 ){
+          let newMinutes = (minutes + delay > 0) ? minutes + delay : 0;
+          let newHour = (hours + delayHour > 0) ? hours + delayHour : 0;
+          if(newMinutes < 10 ){
             newMinutes = "0" + newMinutes
           }
           if(newHour < 10 ){
@@ -147,6 +145,19 @@
           myweekday = "0" + myweekday;
         }
         return myyear + "-" + mymonth + "-" + myweekday; //想要什么格式都可以随便自己拼
+      }
+      function formatDate2(date) {
+        var myyear = date.getFullYear();
+        var mymonth = date.getMonth() + 1;
+        var myweekday = date.getDate();
+
+        if (mymonth < 10) {
+          mymonth = "0" + mymonth;
+        }
+        if (myweekday < 10) {
+          myweekday = "0" + myweekday;
+        }
+        return myyear + "/" + mymonth + "/" + myweekday; //想要什么格式都可以随便自己拼
       }
       function nowTime() {
         var date = new Date();
@@ -175,17 +186,21 @@
       var date3 = document.getElementById("date3");
       var hourIn = document.getElementById("hourIn");
       var hourOut = document.getElementById("hourOut");
+      var confirmdate = document.getElementById("confirmdate");
+      var applydate = document.getElementById("applydate");
       
       date1.innerText = formatDate(date);
       date2.innerText = formatDate(date);
       date3.innerText = formatDate(date);
       hourOut.innerText = transformHour(-2,-2);
       hourIn.innerText = transformHour(0,0);
+      confirmdate.innerText = formatDate(date) + " " + transformHour(-5,-2);
+      applydate.innerText = formatDate(date) + " " + transformHour(-10,-3);
 
       //动态填写序号
       var passCodeId = document.getElementById("passCodeId");
-      var t3 = "2020-12-06 08:00:00";
-      passCodeId.innerText = "298950";
+      var t3 = "2021-03-24 09:31:00";
+      passCodeId.innerText = timeFn(t3);
 
       //吸顶效果
       // var navbar = document.getElementById('navbar')
